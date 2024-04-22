@@ -19,13 +19,6 @@ class Races:
                 self.laps.append(lines[4])
                 self.time.append(lines[5])
 
-            self.grand_prix.pop(0)
-            self.date.pop(0)
-            self.winner.pop(0)
-            self.car.pop(0)
-            self.laps.pop(0)
-            self.time.pop(0)
-
     def Display(self):
         with open("partA_input_data.csv","r") as file:
             csvFile = csv.reader(file)
@@ -35,6 +28,12 @@ class Races:
 
     def limit_lap(self,target):
         above_thresh=[]
+        self.grand_prix.pop(0)
+        self.date.pop(0)
+        self.winner.pop(0)
+        self.car.pop(0)
+        self.laps.pop(0)
+        self.time.pop(0)
 
         for i in range(0,len(self.grand_prix)):
             if int(target)<=int(self.laps[i]):
@@ -44,3 +43,33 @@ class Races:
         for j in range(0,len(above_thresh)):
             print(above_thresh[j])
 
+    def avg_lap(self):
+        times = []
+        for i in range(len(self.time)):
+            times.append(self.time[i].split(":"))
+        avg=[]
+        hours=[]
+        minutes=[]
+        seconds=[]
+        times.pop(0)
+        self.laps.pop(0)
+        for j in range(0, len(times)):
+            hours.append(int(times[j][0]))
+            minutes.append(int(times[j][1]))
+            seconds.append(int(times[j][2]))
+
+        for i in range(0,len(times)):
+            avg.append(format((hours[i]*3500+minutes[i]*60+seconds[i])/int(self.laps[i]),".2f"))
+
+        with open("hey.txt","w") as file:
+
+               file.write(self.grand_prix[0]+" "+self.date[0]+" "+self.winner[0]+" "+self.car[0]+" "+self.laps[0]+" "+self.time[0]+" "+avg[0]+"\n")
+
+        print("a")
+
+
+
+
+
+car=Races()
+car.avg_lap()
