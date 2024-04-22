@@ -22,7 +22,8 @@ def opt1():
 
     race.Display()
 def opt2():
-    race.limit_lap(49)
+    target=input("Enter the limit of laps\n")
+    race.limit_lap(int(target))
 
 def opt3():
     pass
@@ -32,15 +33,14 @@ def opt5():
     pass
 
 while True:
-    window()
-  #try:
+  window()
+  try:
 
-    ask=2#int(input("\nChoose one of the options above\n"))
+    ask=int(input("\nChoose one of the options above\n"))
     if ask==1:
         opt1()
     elif ask == 2:
          opt2()
-         break
     elif ask==3:
          opt3()
     elif ask==4:
@@ -53,9 +53,9 @@ while True:
     else:
         print("Invalid option")
         time.sleep(2)
- # except ValueError:
-      #print("Only numbers are allowed")
-    #  time.sleep(2)
+  except ValueError:
+      print("Only numbers are allowed")
+    # time.sleep(2)
 
 
 
