@@ -1,5 +1,6 @@
 import csv
 import time
+import math
 class Races:
 
     def __init__(self):
@@ -18,6 +19,12 @@ class Races:
                 self.car.append(lines[3])
                 self.laps.append(lines[4])
                 self.time.append(lines[5])
+        self.grand_prix.pop(0)
+        self.date.pop(0)
+        self.winner.pop(0)
+        self.car.pop(0)
+        self.laps.pop(0)
+        self.time.pop(0)
 
     def Display(self):
         with open("partA_input_data.csv","r") as file:
@@ -28,12 +35,7 @@ class Races:
 
     def limit_lap(self,target):
         above_thresh=[]
-        self.grand_prix.pop(0)
-        self.date.pop(0)
-        self.winner.pop(0)
-        self.car.pop(0)
-        self.laps.pop(0)
-        self.time.pop(0)
+
 
         for i in range(0,len(self.grand_prix)):
             if int(target)<=int(self.laps[i]):
@@ -51,25 +53,29 @@ class Races:
         hours=[]
         minutes=[]
         seconds=[]
-        times.pop(0)
-        self.laps.pop(0)
+
+
         for j in range(0, len(times)):
             hours.append(int(times[j][0]))
             minutes.append(int(times[j][1]))
             seconds.append(int(times[j][2]))
 
         for i in range(0,len(times)):
-            avg.append(format((hours[i]*3500+minutes[i]*60+seconds[i])/int(self.laps[i]),".2f"))
+            avg.append(format((hours[i]*3600+minutes[i]*60+seconds[i])/int(self.laps[i]),".2f"))
 
         with open("hey.txt","w") as file:
+               file.write("GRAND PRIX,DATE,WINNER,CAR,LAPS,TIME,AVERAGE_LAP\n")
 
-               file.write(self.grand_prix[0]+" "+self.date[0]+" "+self.winner[0]+" "+self.car[0]+" "+self.laps[0]+" "+self.time[0]+" "+avg[0]+"\n")
+               for i in range(0,len(self.grand_prix)):
+                   hour=math.floor(round(float(avg[i]))/3600)
+                   min=math.floor(round(float(avg[i])%3600)/60)
+                   sec=math.floor((round(float(avg[i]))%3600)%60)
+                   file.write(self.grand_prix[i]+","+self.date[i]+","+self.winner[i]+","+self.car[i]+","
+                             +self.laps[i]+","+self.time[i]+","+str(hour)+":"+str(min)+":"+str(sec)+"\n")
 
-        print("a")
 
 
 
 
 
-car=Races()
-car.avg_lap()
+

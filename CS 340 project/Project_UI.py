@@ -26,7 +26,7 @@ def opt2():
     race.limit_lap(int(target))
 
 def opt3():
-    pass
+    race.avg_lap()
 def opt4():
     pass
 def opt5():
