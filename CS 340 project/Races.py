@@ -63,7 +63,7 @@ class Races:
         for i in range(0,len(times)):
             avg.append(format((hours[i]*3600+minutes[i]*60+seconds[i])/int(self.laps[i]),".2f"))
 
-        with open("hey.txt","w") as file:
+        with open("partA_output_data.txt","w") as file:
                file.write("GRAND PRIX,DATE,WINNER,CAR,LAPS,TIME,AVERAGE_LAP\n")
 
                for i in range(0,len(self.grand_prix)):
