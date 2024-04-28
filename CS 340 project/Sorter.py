@@ -1,16 +1,19 @@
 import math
-
 class Sorter:
 
+      def BubbleSort(self,target,desc):
+        if(desc):
+          for i in range(0,len(target)):
+               for j in range(1,len(target)-i):
+                    if target[j-1]<target[j]:
+                         target[j],target[j-1]=target[j-1],target[j]
+          return target
+        else:
+             for i in range(0, len(target)):
+                  for j in range(1, len(target) - i ):
+                       if target[j - 1] > target[j]:
+                            target[j], target[j - 1] = target[j - 1], target[j]
+             return target
 
-    def MergeSort(self,target,left,right):
-        if len(target)>1:
-            mid=math.floor((right+left)/2)
-            arr1=[0]*(mid-1)
-            print(len(arr1))
 
 
-sort=Sorter()
-arr=[1,3,2]
-
-sort.MergeSort(arr,right=0,left=len(arr)-1)
