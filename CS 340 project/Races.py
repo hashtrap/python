@@ -1,24 +1,29 @@
-import csv
 import time
 import math
+
 class Races:
 
     def __init__(self):
-        with open("partA_input_data.csv","r") as file:
-            csvFile = csv.reader(file)
-            self.grand_prix=[]
-            self.date=[]
-            self.winner=[]
-            self.car=[]
-            self.laps=[]
-            self.time=[]
-            for lines in csvFile:
-                self.grand_prix.append(lines[0])
-                self.date.append(lines[1])
-                self.winner.append(lines[2])
-                self.car.append(lines[3])
-                self.laps.append(lines[4])
-                self.time.append(lines[5])
+        self.grand_prix = []
+        self.date = []
+        self.winner = []
+        self.car = []
+        self.laps = []
+        self.time = []
+        with open("partA_input_data.txt","r") as file:
+            line=[]
+
+
+            for i in range(23):
+                field = []
+                line.append(file.readline())
+                field=line[i].split(',')
+                self.grand_prix.append(field[0])
+                self.date.append(field[1])
+                self.winner.append(field[2])
+                self.car.append(field[3])
+                self.laps.append(field[4])
+                self.time.append(field[5])
         self.grand_prix.pop(0)
         self.date.pop(0)
         self.winner.pop(0)
@@ -26,12 +31,20 @@ class Races:
         self.laps.pop(0)
         self.time.pop(0)
 
+
+
+
+
+
     def Display(self):
-        with open("partA_input_data.csv","r") as file:
-            csvFile = csv.reader(file)
-            for lines in csvFile:
-                print(lines)
-                time.sleep(0.5)
+       for i in range(len(self.grand_prix)):
+           print(self.grand_prix[i])
+           print(self.date[i])
+           print(self.winner[i])
+           print(self.car[i])
+           print(self.laps[i])
+           print(self.time[i])
+           time.sleep(0.5)
 
     def limit_lap(self,target):
         above_thresh=[]
@@ -73,9 +86,13 @@ class Races:
                    file.write(self.grand_prix[i]+","+self.date[i]+","+self.winner[i]+","+self.car[i]+","
                              +self.laps[i]+","+self.time[i]+","+str(hour)+":"+str(min)+":"+str(sec)+"\n")
 
+    def value_sort(self,category):
+        if str(category).lower() == "winner":
+            pass
 
 
 
-
+a=Races()
+a.Display
 
 

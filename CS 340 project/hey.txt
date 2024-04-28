@@ -1,0 +1,15 @@
+hello hter
+bgg
+self.grand_prix.append(b[0])
+                    self.date.append(b[1])
+                    self.winner.append(b[2])
+                    self.car.append(b[3])
+                    self.laps.append(b[4])
+                    self.time.append(b[5])
+
+         self.grand_prix.pop(0)
+        self.date.pop(0)
+        self.winner.pop(0)
+        self.car.pop(0)
+        self.laps.pop(0)
+        self.time.pop(0)

@@ -28,7 +28,8 @@ def opt2():
 def opt3():
     race.avg_lap()
 def opt4():
-    pass
+    toSort=input("Enter the value to sort by\n")
+
 def opt5():
     pass
 
