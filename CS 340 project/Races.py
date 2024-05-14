@@ -11,7 +11,7 @@ class Races:
         self.car = []
         self.laps = []
         self.time = []
-        with open("partA_input_data.txt","r") as file:
+        with open("partA_input_data.txt", "r") as file:
             line=[]
 
 
@@ -103,6 +103,7 @@ class Races:
                     print(self.car[i])
                     print(self.laps[i])
                     print(self.time[i])
+                    time.sleep(0.5)
                     i+=1
                 else:
                     i+=1
@@ -117,6 +118,7 @@ class Races:
                 print(self.car[i])
                 print(self.laps[i])
                 print(self.time[i])
+                time.sleep(0.5)
                 i += 1
             else:
                 i += 1
@@ -131,6 +133,7 @@ class Races:
                 print(self.car[i])
                 print(self.laps[i])
                 print(self.time[i])
+                time.sleep(0.5)
                 i += 1
             else:
                 i += 1
@@ -145,6 +148,7 @@ class Races:
                 print(self.car[i])
                 print(self.laps[i])
                 print(self.time[i])
+                time.sleep(0.5)
                 i += 1
             else:
                 i += 1
@@ -159,6 +163,7 @@ class Races:
                 print(self.car[i])
                 print(self.laps[i])
                 print(self.time[i])
+                time.sleep(0.5)
                 i += 1
             else:
                 i += 1
@@ -173,8 +178,10 @@ class Races:
                 print(self.car[i])
                 print(self.laps[i])
                 print(self.time[i])
+                time.sleep(0.5)
                 i += 1
             else:
                 i += 1
-race=Races()
-race.value_sort("laps",False)
+
+
+

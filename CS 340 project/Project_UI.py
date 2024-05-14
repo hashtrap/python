@@ -29,15 +29,21 @@ def opt3():
     race.avg_lap()
 def opt4():
     toSort=input("Enter the value to sort by\n")
-    order=input("Type yes if you want to sort by ascending or descending\n")
-    race.value_sort(toSort,order)
+    order=input("Type 1 or 0 if you want to sort by ascending or descending\n")
+    if order=='1':
+        race.value_sort(toSort,True)
+    elif order=='0':
+        race.value_sort(toSort,False)
+    else:
+        print("Value put is not an option so order will be ascending")
+        race.value_sort(toSort, True)
 
 def opt5():
     pass
 
 while True:
-    window()
- # try:
+  window()
+  try:
 
     ask=int(input("\nChoose one of the options above\n"))
     if ask==1:
@@ -56,9 +62,9 @@ while True:
     else:
         print("Invalid option")
         time.sleep(2)
-  #except ValueError:
-     # print("Only numbers are allowed")
-    # time.sleep(2)
+  except ValueError:
+      print("Only numbers are allowed")
+      time.sleep(2)
 
 
 
