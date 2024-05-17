@@ -6,6 +6,7 @@ Description: A simple ui and ai project in python
 '''
 import time
 from Races import *
+import os
 
 race=Races()
 def window():
@@ -28,6 +29,8 @@ def opt2():
 def opt3():
     race.avg_lap()
 def opt4():
+
+  if os.path.exists("partA_output_data.txt"):
     toSort=input("Enter the value to sort by\n")
     order=input("Type 1 or 0 if you want to sort by ascending or descending\n")
     if order=='1':
@@ -37,6 +40,9 @@ def opt4():
     else:
         print("Value put is not an option so order will be ascending")
         race.value_sort(toSort, True)
+  else:
+     print("File does not exist,run option 3 first")
+     time.sleep(3)
 
 def opt5():
     pass

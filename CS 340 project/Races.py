@@ -16,7 +16,6 @@ class Races:
 
 
             for i in range(23):
-                field = []
                 line.append(file.readline())
                 field=line[i].split(',')
                 self.grand_prix.append(field[0])
@@ -24,7 +23,7 @@ class Races:
                 self.winner.append(field[2])
                 self.car.append(field[3])
                 self.laps.append(field[4])
-                self.time.append(field[5])
+                self.time.append(field[5].replace('\n',''))
         self.grand_prix.pop(0)
         self.date.pop(0)
         self.winner.pop(0)
@@ -83,12 +82,13 @@ class Races:
                file.write("GRAND PRIX,DATE,WINNER,CAR,LAPS,TIME,AVERAGE_LAP\n")
 
                for i in range(0,len(self.grand_prix)):
-                   hour=math.floor(round(float(avg[i]))/3600)
-                   min=math.floor(round(float(avg[i])%3600)/60)
-                   sec=math.floor((round(float(avg[i]))%3600)%60)
+                   hour=str(math.floor(round(float(avg[i]))/3600))
+                   min=str(math.floor(round(float(avg[i])%3600)/60))
+                   sec=str(math.floor((round(float(avg[i]))%3600)%60))
                    file.write(self.grand_prix[i]+","+self.date[i]+","+self.winner[i]
-                              +","+self.car[i]+","+self.laps[i]+","
-                              +self.time[i] +","+str(hour)+":"+str(min)+":"+str(sec)+"\n")
+                              +","+self.car[i]+","+self.laps[i]+","+self.time[i]
+                              +","+hour+":"+min+":"+sec+"\n")
+
 
     def value_sort(self,category,order):
         sort=Sorter()
