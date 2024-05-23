@@ -6,6 +6,7 @@ Description: A simple ui and ai project in python
 '''
 import time
 from Races import *
+import GUI_graph as gui
 import os
 
 race=Races()
@@ -23,8 +24,19 @@ def opt1():
 
     race.Display()
 def opt2():
-    target=input("Enter the limit of laps\n")
-    race.limit_lap(int(target))
+    while True:
+
+      try:
+        target=int(input("Enter the limit of laps\n"))
+        if target>0:
+           race.limit_lap(int(target))
+           break
+        else:
+           print("You must enter an integer greater than 0 \n")
+           time.sleep(2)
+      except ValueError:
+        print("Error: Only numbers are allowed \n")
+        time.sleep(2)
 
 def opt3():
     race.avg_lap()
@@ -45,7 +57,7 @@ def opt4():
      time.sleep(3)
 
 def opt5():
-    pass
+    gui.calculate_avg()
 
 while True:
   window()

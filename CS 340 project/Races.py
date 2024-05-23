@@ -56,7 +56,8 @@ class Races:
                                    self.car[i]+" "+self.laps[i]+" "+self.time[i])
         above_thresh=sorted(above_thresh)
         for j in range(0,len(above_thresh)):
-            print(above_thresh[j])
+            print(above_thresh[j],"\n")
+            time.sleep(1)
 
     def avg_lap(self):
         times = []
@@ -102,7 +103,7 @@ class Races:
                     print(self.winner[i])
                     print(self.car[i])
                     print(self.laps[i])
-                    print(self.time[i])
+                    print(self.time[i],"\n")
                     time.sleep(0.5)
                     i+=1
                 else:
@@ -117,7 +118,7 @@ class Races:
                 print(self.winner[i])
                 print(self.car[i])
                 print(self.laps[i])
-                print(self.time[i])
+                print(self.time[i],"\n")
                 time.sleep(0.5)
                 i += 1
             else:
@@ -132,7 +133,7 @@ class Races:
                 print(self.winner[i])
                 print(self.car[i])
                 print(self.laps[i])
-                print(self.time[i])
+                print(self.time[i],"\n")
                 time.sleep(0.5)
                 i += 1
             else:
@@ -147,7 +148,7 @@ class Races:
                 print(self.winner[i])
                 print(self.car[i])
                 print(self.laps[i])
-                print(self.time[i])
+                print(self.time[i],"\n")
                 time.sleep(0.5)
                 i += 1
             else:
@@ -162,7 +163,7 @@ class Races:
                 print(self.winner[i])
                 print(self.car[i])
                 print(self.laps[i])
-                print(self.time[i])
+                print(self.time[i],"\n")
                 time.sleep(0.5)
                 i += 1
             else:
@@ -177,7 +178,7 @@ class Races:
                 print(self.winner[i])
                 print(self.car[i])
                 print(self.laps[i])
-                print(self.time[i])
+                print(self.time[i],"\n")
                 time.sleep(0.5)
                 i += 1
             else:
