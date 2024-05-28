@@ -4,6 +4,7 @@ from Sorter import *
 
 class Races:
 
+# create constructor to load information
     def __init__(self):
         self.grand_prix = []
         self.date = []
@@ -14,7 +15,7 @@ class Races:
         with open("partA_input_data.txt", "r") as file:
             line=[]
 
-
+# Load the data int the objects lists
             for i in range(23):
                 line.append(file.readline())
                 field=line[i].split(',')
@@ -24,6 +25,7 @@ class Races:
                 self.car.append(field[3])
                 self.laps.append(field[4])
                 self.time.append(field[5].replace('\n',''))
+# removes the first element because it contains the name of the column
         self.grand_prix.pop(0)
         self.date.pop(0)
         self.winner.pop(0)
@@ -35,7 +37,7 @@ class Races:
 
 
 
-
+# Created a method for displaying what the original file has
     def Display(self):
        for i in range(len(self.grand_prix)):
            print(self.grand_prix[i])
@@ -44,8 +46,10 @@ class Races:
            print(self.car[i])
            print(self.laps[i])
            print(self.time[i])
-           time.sleep(0.5)
+           time.sleep(0.5) # Delays print for asthetic purposes
 
+# Created a method that will display the inforamtion that has a number of laps
+# above a given limit
     def limit_lap(self,target):
         above_thresh=[]
 
@@ -59,6 +63,7 @@ class Races:
             print(above_thresh[j],"\n")
             time.sleep(1)
 
+# Created a method to write the new file with the added field
     def avg_lap(self):
         times = []
         avg = []
@@ -75,13 +80,13 @@ class Races:
             hours.append(int(times[j][0]))
             minutes.append(int(times[j][1]))
             seconds.append(int(times[j][2]))
-
+        # Turns the time values in the original file into seconds
         for i in range(0,len(times)):
             avg.append(format((hours[i]*3600+minutes[i]*60+seconds[i])/int(self.laps[i]),".2f"))
 
         with open("partA_output_data.txt","w") as file:
                file.write("GRAND PRIX,DATE,WINNER,CAR,LAPS,TIME,AVERAGE_LAP\n")
-
+               # Conversion of seconds into hours,minutes and seconds
                for i in range(0,len(self.grand_prix)):
                    hour=str(math.floor(round(float(avg[i]))/3600))
                    min=str(math.floor(round(float(avg[i])%3600)/60))
@@ -90,7 +95,7 @@ class Races:
                               +","+self.car[i]+","+self.laps[i]+","+self.time[i]
                               +","+hour+":"+min+":"+sec+"\n")
 
-
+# Created a method to sort the information according to the wanted field
     def value_sort(self,category,order):
         sort=Sorter()
         if str(category).lower() == "winner":
@@ -124,10 +129,12 @@ class Races:
             else:
                 i += 1
         elif str(category).lower() == "date":
-          fixed = sort.BubbleSort(self.date,order)
-          i = 0
-          while i < len(self.date):
-            if self.date[i] == fixed[i]:
+
+         if order:
+
+            i = 0
+            while i < len(self.date):
+
                 print(self.grand_prix[i])
                 print(self.date[i])
                 print(self.winner[i])
@@ -136,8 +143,17 @@ class Races:
                 print(self.time[i],"\n")
                 time.sleep(0.5)
                 i += 1
-            else:
-                i += 1
+         else:
+             i = len(self.date)-1
+             while i >0:
+                 print(self.grand_prix[i])
+                 print(self.date[i])
+                 print(self.winner[i])
+                 print(self.car[i])
+                 print(self.laps[i])
+                 print(self.time[i], "\n")
+                 time.sleep(0.5)
+                 i -= 1
         elif str(category).lower() == "car":
           fixed = sort.BubbleSort(self.car,order)
           i = 0

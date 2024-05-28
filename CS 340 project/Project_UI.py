@@ -43,14 +43,15 @@ def opt3():
 def opt4():
 
   if os.path.exists("partA_output_data.txt"):
-    toSort=input("Enter the value to sort by\n")
+    toSort=input("Enter the value to sort by [winner,grand prix,date,car,laps,time]\n")
     order=input("Type 1 or 0 if you want to sort by ascending or descending\n")
     if order=='1':
         race.value_sort(toSort,True)
     elif order=='0':
         race.value_sort(toSort,False)
     else:
-        print("Value put is not an option so order will be ascending")
+        print("Value put is not an option so order will be ascending \n")
+        time.sleep(3)
         race.value_sort(toSort, True)
   else:
      print("File does not exist,run option 3 first")
