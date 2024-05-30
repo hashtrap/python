@@ -99,10 +99,29 @@ class Races:
     def value_sort(self,category,order):
         sort=Sorter()
         if str(category).lower() == "winner":
-            fixed=sort.BubbleSort(self.winner,order)
-            i=0
-            while i<len(self.winner):
-                if self.winner[i]==fixed[i]:
+            fixed = self.winner.copy()
+            sorted = sort.BubbleSort(fixed, order)
+
+            for j in range(0, len(fixed)):
+                for i in range(0, len(fixed)):
+                    if self.winner[i] == fixed[j]:
+                        print(self.grand_prix[i])
+                        print(self.date[i])
+                        print(self.winner[i])
+                        print(self.car[i])
+                        print(self.laps[i])
+                        print(self.time[i], "\n")
+                        time.sleep(0.5)
+
+                    else:
+                        continue
+        elif str(category).lower() == "grand prix":
+          fixed = self.grand_prix.copy()
+          sorted=sort.BubbleSort(fixed,order)
+
+          for j in range(0,len(fixed)):
+              for i in range(0,len(fixed)):
+                 if self.grand_prix[i] == fixed[j]:
                     print(self.grand_prix[i])
                     print(self.date[i])
                     print(self.winner[i])
@@ -110,24 +129,9 @@ class Races:
                     print(self.laps[i])
                     print(self.time[i],"\n")
                     time.sleep(0.5)
-                    i+=1
-                else:
-                    i+=1
-        elif str(category).lower() == "grand prix":
-          fixed = sort.BubbleSort(self.grand_prix,order)
-          i = 0
-          while i < len(self.grand_prix):
-            if self.grand_prix[i] == fixed[i]:
-                print(self.grand_prix[i])
-                print(self.date[i])
-                print(self.winner[i])
-                print(self.car[i])
-                print(self.laps[i])
-                print(self.time[i],"\n")
-                time.sleep(0.5)
-                i += 1
-            else:
-                i += 1
+
+                 else:
+                    continue
         elif str(category).lower() == "date":
 
          if order:
@@ -155,50 +159,58 @@ class Races:
                  time.sleep(0.5)
                  i -= 1
         elif str(category).lower() == "car":
-          fixed = sort.BubbleSort(self.car,order)
-          i = 0
-          while i < len(self.car):
-            if self.car[i] == fixed[i]:
-                print(self.grand_prix[i])
-                print(self.date[i])
-                print(self.winner[i])
-                print(self.car[i])
-                print(self.laps[i])
-                print(self.time[i],"\n")
-                time.sleep(0.5)
-                i += 1
-            else:
-                i += 1
-        elif str(category).lower() == "laps":
-          fixed = sort.BubbleSort(self.laps,order)
-          i = 0
-          while i < len(self.laps):
-            if self.laps[i] == fixed[i]:
-                print(self.grand_prix[i])
-                print(self.date[i])
-                print(self.winner[i])
-                print(self.car[i])
-                print(self.laps[i])
-                print(self.time[i],"\n")
-                time.sleep(0.5)
-                i += 1
-            else:
-                i += 1
-        elif str(category).lower() == "time":
-          fixed = sort.BubbleSort(self.time,order)
-          i = 0
-          while i < len(self.time):
-            if self.time[i] == fixed[i]:
-                print(self.grand_prix[i])
-                print(self.date[i])
-                print(self.winner[i])
-                print(self.car[i])
-                print(self.laps[i])
-                print(self.time[i],"\n")
-                time.sleep(0.5)
-                i += 1
-            else:
-                i += 1
+            fixed = self.car.copy()
+            sorted = sort.BubbleSort(fixed, order)
 
+            for j in range(0, len(fixed)):
+                for i in range(0, len(fixed)):
+                    if self.car[i] == fixed[j]:
+                        print(self.grand_prix[i])
+                        print(self.date[i])
+                        print(self.winner[i])
+                        print(self.car[i])
+                        print(self.laps[i])
+                        print(self.time[i], "\n")
+                        time.sleep(0.5)
+
+                    else:
+                        continue
+        elif str(category).lower() == "laps":
+            fixed = self.laps.copy()
+            sorted = sort.BubbleSort(fixed, order)
+
+            for j in range(0, len(fixed)):
+                for i in range(0, len(fixed)):
+                    if self.laps[i] == fixed[j]:
+                        print(self.grand_prix[i])
+                        print(self.date[i])
+                        print(self.winner[i])
+                        print(self.car[i])
+                        print(self.laps[i])
+                        print(self.time[i], "\n")
+                        time.sleep(0.5)
+
+                    else:
+                        continue
+        elif str(category).lower() == "time":
+            fixed = self.time.copy()
+            sorted = sort.BubbleSort(fixed, order)
+
+            for j in range(0, len(fixed)):
+                for i in range(0, len(fixed)):
+                    if self.time[i] == fixed[j]:
+                        print(self.grand_prix[i])
+                        print(self.date[i])
+                        print(self.winner[i])
+                        print(self.car[i])
+                        print(self.laps[i])
+                        print(self.time[i], "\n")
+                        time.sleep(0.5)
+
+                    else:
+                        continue
+        else:
+            print("The option you have given isn't an option, Excecute abort")
+            time.sleep(3)
 
 

@@ -63,4 +63,3 @@ def calculate_avg():
 
 
 
-calculate_avg()
