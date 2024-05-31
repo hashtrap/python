@@ -1,6 +1,8 @@
 from matplotlib import pyplot as py_lt
 
+# Class to make the necessary object
 class Gui:
+    #Private method to do the file manipulation for security reasons
     def __calc_lap(self):
         with open("partA_output_data.txt", "r") as file:
 
@@ -42,11 +44,12 @@ class Gui:
 
         return avg_lap,driver,races_driver
 
-
+# A sort of getter method for the private method
     def calc_lap(self):
        avg_lap,driver,races_driver= self.__calc_lap()
        return avg_lap,driver,races_driver
 
+# Method for creating the bar plot
 def calculate_avg():
     gui=Gui()
     avg_lap=[]
