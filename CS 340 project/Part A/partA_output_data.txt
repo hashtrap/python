@@ -1,0 +1,23 @@
+GRAND PRIX,DATE,WINNER,CAR,LAPS,TIME,AVERAGE_LAP
+Bahrain,05-Mar-23,Max Verstappen,RED BULL RACING,57,33:56:7,0:35:43
+Saudi Arabia,19-Mar-23,Sergio Perez,RED BULL RACING,50,21:14:9,0:25:29
+Australia,02-Apr-23,Max Verstappen,RED BULL RACING,58,32:38:4,0:33:46
+Azerbaijan,30-Apr-23,Sergio Perez,RED BULL RACING,51,32:42:4,0:38:28
+Miami,07-May-23,Max Verstappen,RED BULL RACING,57,27:38:2,0:29:5
+Monaco,28-May-23,Max Verstappen,RED BULL RACING,78,48:52:0,0:37:35
+Spain,04-Jun-23,Max Verstappen,RED BULL RACING,66,27:57:9,0:25:25
+Canada,18-Jun-23,Max Verstappen,RED BULL RACING,70,33:58:3,0:29:7
+Austria,02-Jul-23,Max Verstappen,RED BULL RACING,71,25:33:6,0:21:36
+Great Britain,09-Jul-23,Max Verstappen,RED BULL RACING,52,25:16:9,0:29:9
+Hungary,23-Jul-23,Max Verstappen,RED BULL RACING,70,38:08:6,0:32:41
+Belgium,30-Jul-23,Max Verstappen,RED BULL RACING,44,22:30:4,0:30:41
+Netherlands,27-Aug-23,Max Verstappen,RED BULL RACING,72,24:04:4,0:20:3
+Italy,03-Sep-23,Max Verstappen,RED BULL RACING,51,13:41:1,0:16:6
+Singapore,17-Sep-23,Carlos Sainz,FERRARI,62,46:37:4,0:45:7
+Japan,24-Sep-23,Max Verstappen,RED BULL RACING,53,30:58:4,0:35:3
+Qatar,08-Oct-23,Max Verstappen,RED BULL RACING,57,27:39:2,0:29:6
+United States,22-Oct-23,Max Verstappen,RED BULL RACING,56,35:21:4,0:37:53
+Mexico,29-Oct-23,Max Verstappen,RED BULL RACING,71,02:30:8,0:2:7
+Brazil,05-Nov-23,Max Verstappen,RED BULL RACING,71,56:48:9,0:48:0
+Las Vegas,18-Nov-23,Max Verstappen,RED BULL RACING,50,29:08:3,0:34:58
+Abu Dhabi,26-Nov-23,Max Verstappen,RED BULL RACING,58,27:02:6,0:27:58
