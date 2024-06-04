@@ -5,9 +5,12 @@ Email: 20220338@student.act.edu
 Copyright: Full Rights reserved for the author, source code found from authors personal repository
 '''
 import time
+from AI import *
+
+Ai=Ai()
 
 def opt1():
-    pass
+    Ai.Display()
 
 
 def opt2():
