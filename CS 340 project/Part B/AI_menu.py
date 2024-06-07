@@ -14,11 +14,12 @@ def opt1():
 
 
 def opt2():
-    pass
+    Ai.Topology()
 
 
 def opt3():
-    pass
+    Ai.Training_steps()
+
 
 
 def opt4():
@@ -31,13 +32,13 @@ def opt5():
 
 def window():
     print("==================================================================")
-    print("USER MENU: MLP CLASSIFICATION OF THE ###### DATA SET (UCI REPOSITORY)")
+    print("USER MENU: MLP CLASSIFICATION OF THE  BANK NOTE IDENTIFICATION DATA SET (UCI REPOSITORY)")
     print("==================================================================")
     print("1. Read the labelled text data file, display the first 5 lines")
-    print("2. Choose the size of the hidden layers of the MLP topology (e.g. 6-?-?-2)")
-    print("3. Choose the size of the training step (0.001 - 0.5, [ENTER] for adaptable)")
-    print("4. Train on 80% of labeled data, display progress graph")
-    print("5. Classify the unlabeled data, output training report and confusion matrix")
+    print("2. MLP topology")
+    print("3. Training step")
+    print("4. Train on 80% or 50-50")
+    print("5. Classify data")
     print("6. Exit the program \n")
 
 

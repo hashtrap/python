@@ -6,38 +6,54 @@ class Ai:
 
     def __init__(self):
         self.data=[]
-        self.topology=()
+        self.topology=(10,10,10)
         self.train_step=None
+        self.random_split=True
         columns = ['variance', 'skewness', 'curtosis', 'entropy', 'class']
         self.car_data = pd.read_csv('data_banknote_authentication.txt', names=columns)
-    def Display(self):
+    def Display(self)->None:
        print(self.car_data.head(5))
 
-    def Topology(self):
-        topology=input("Please enter the topology you wish to(e.g 10-4-5).(min=2 layers) ")
+    def Topology(self)->None:
+        value=input("Please enter the topology you wish to(e.g 10-4-5).(min=2 layers) ")
 
         try:
+            if value!="":
+                self.topology=()
+                topology=value.split("-")
+                if len(topology)>=2:
+                    for i in topology:
+                        self.topology=(*self.topology,(int(i)))
 
-            a=topology.split("-")
-            if len(a)>=2:
-                for i in a:
-                   self.topology=(*self.topology,(int(i)))
 
+                else:
+                    print("Exiting program, the limit is two hidden layers, using default")
             else:
-                print("Exiting program, the limit is two hidden layers")
+                print("Exiting program, using default")
         except ValueError:
-               print("Error what you entered wasn't a number but a character")
-    def Training_steps(self):
-        steps=input("Please enter the number for training steps")
+               print("Error what you entered wasn't a number but a character, using default")
+    def Test_split(self)->None:
+        option=input("Choose 1 if you want a 80-20 training or 2 if you want 50-50")
+        if option=="1":
+            self.random_split=True
+        elif option=="2":
+            self.random_split=False
+        else:
+            print("Exiting program, default value will be used")
+    def Training_steps(self,)->None:
+        steps=input("Please enter the number for training steps(0.001 - 0.5)")
         try:
-            if steps==None:
+            if steps=="":
                 print("Because steps weren't chosen it will be left to the system.")
-            elif steps<0.001 or steps>0.5:
-
+            elif float(steps)<0.001 or float(steps)>0.5:
+                  print("The input entered isn't in the designated limit")
+            else:
+                self.train_step=float(steps)
+                print(self.train_step)
         except ValueError:
-            print("Error: Characters aren't numbers")
+            print("Error: Characters or spaces aren't numbers")
 
-    def opology(self,topology=(10,10,10)):
+    def _training(self)->None:
        X =self.car_data.iloc[:, 0:4]
        y = self.car_data.select_dtypes(include=['int64'])
 
@@ -49,7 +65,11 @@ class Ai:
        y = y.apply(le.fit_transform)
 
        from sklearn.model_selection import train_test_split
-       X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
+       if self.random_split:
+             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20
+                                                                 ,random_state=np.random.seed(int(time.time())))
+       else:
+           X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5)
 
        from sklearn.preprocessing import StandardScaler
        scaler = StandardScaler()
@@ -59,7 +79,7 @@ class Ai:
        X_test = scaler.transform(X_test)
 
        from sklearn.neural_network import MLPClassifier
-       mlp = MLPClassifier(hidden_layer_sizes=topology, max_iter=1000,learning_rate='adaptive')
+       mlp = MLPClassifier(hidden_layer_sizes=self.topology, max_iter=1000,learning_rate='adaptive')
        mlp.fit(X_train, y_train.values.ravel())
 
        predictions = mlp.predict(X_test)
@@ -69,6 +89,9 @@ class Ai:
        print(confusion_matrix(y_test, predictions))
        print('\nNow printing the classification report...\n')
        print(classification_report(y_test, predictions))
+
+    def Training(self)->None:
+        self._training()
 
 
 a=Ai()
