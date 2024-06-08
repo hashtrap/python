@@ -23,11 +23,12 @@ def opt3():
 
 
 def opt4():
-    pass
+    Ai.Test_split()
+    Ai.Training()
 
 
 def opt5():
-    pass
+    Ai.Classification()
 
 
 def window():
