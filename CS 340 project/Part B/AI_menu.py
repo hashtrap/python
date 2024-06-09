@@ -29,6 +29,7 @@ def opt4():
 
 def opt5():
     Ai.Classification()
+    Ai.Graphs()
 
 
 def window():

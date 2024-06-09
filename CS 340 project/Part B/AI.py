@@ -9,14 +9,14 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
 # A list with the labels of the data put outside so that it is a global variable
-columns = ['variance', 'skewness', 'curtosis', 'entropy', 'class']
+columns = ['Variance', 'Skewness', 'Curtosis', 'Entropy', 'Class']
 
 
 class Ai:
 
     def __init__(self):
         self.data = []
-        self.topology = (10, 10, 10)
+        self.topology = (10,10,10)
         self.train_step = None
         self.random_split = True
         self.car_data = pd.read_csv('data_banknote_authentication.txt'
@@ -112,6 +112,7 @@ class Ai:
 
         predictions = mlp.predict(X_test)
 
+
         print("Training complete")
         if not graph:
             return y_test,predictions
@@ -125,7 +126,12 @@ class Ai:
     def Classification(self):
         y_test, predictions = self._training()
         print('Now printing the confusion matrix (without normalization)...\n')
+        matrix=confusion_matrix(y_test, predictions)
         print(confusion_matrix(y_test, predictions))
+
+        with open("output_data.txt", "w") as file:
+             file.write("  0   1 \n")
+             file.writelines("0 "+str(matrix[0][0])+" "+str(matrix[0][1])+"\n1 "+str(matrix[1][0])+" "+str(matrix[1][1])+"\n")
         print('\nNow printing the classification report...\n')
         print(classification_report(y_test, predictions))
         print("Accuracy of the model:")
@@ -134,14 +140,45 @@ class Ai:
     def Graphs(self) -> None:
         mlp,X_train,y_train = self._training(True)
         loss=[]
+        weights=[]
+        values=y_train.values.tolist()
+        for j in range(0, len(values)):
+            with open("testing_data_unlabeled.txt", "a") as file:
+                file.writelines(str(values[j]) + "\n")
+        for j in range(0, len(values)):
+            with open("testing_data_labeled.txt", "a") as file:
+                if j>0:
+                     file.writelines(str(values[j]) + "\n")
+                else:
+                   file.write("Class \n")
+
+
+        for j in range(0,len(X_train)):
+            with open("training_data.txt","a") as file:
+                if j >0:
+                    file.writelines(str(X_train[j])+"\n")
+                else:
+                    file.write("Variance,Skewness,Curtosis,Entropy \n")
+        
+        
 
         for i in range(0,1000):
-            mlp.partial_fit(X_train, y_train.values.ravel())
-            loss.append(mlp.loss_)
+             mlp.partial_fit(X_train, y_train.values.ravel())
+             loss.append(mlp.loss_)
+        weights=mlp.coefs_
+        print(len(weights))
         plt.plot(loss)
         plt.xlabel('Iteration')
         plt.ylabel('Loss')
         plt.title('Weight Loss Progress')
+        plt.show()
+
+
+
+        plt.plot(weights[0])
+        plt.xlabel('Iteration')
+        plt.ylabel('weights')
+        plt.title('Progress')
         plt.show()
 
 
