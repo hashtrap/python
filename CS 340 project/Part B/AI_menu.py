@@ -7,8 +7,10 @@ Copyright: Full Rights reserved for the author, source code found from authors p
 import time
 from AI import *
 
+# Create necessary object
 Ai=Ai()
 
+# Make the functions necessary for the work
 def opt1():
     Ai.Display()
 
@@ -30,8 +32,9 @@ def opt4():
 def opt5():
     Ai.Classification()
     Ai.Graphs()
+    Ai.graph_18()
 
-
+# Window to select options
 def window():
     print("==================================================================")
     print("USER MENU: MLP CLASSIFICATION OF THE  BANK NOTE IDENTIFICATION DATA SET (UCI REPOSITORY)")
@@ -44,8 +47,10 @@ def window():
     print("6. Exit the program \n")
 
 
+# Loop that runs forever until we tell it to stop
 while True:
         window()
+        # Statements that detect if we have not put a number as an option
         try:
 
             ask = int(input("\nChoose one of the options above\n"))
