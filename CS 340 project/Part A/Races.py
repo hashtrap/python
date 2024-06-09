@@ -45,7 +45,7 @@ class Races:
            print(self.winner[i])
            print(self.car[i])
            print(self.laps[i])
-           print(self.time[i])
+           print(self.time[i],"\n")
            time.sleep(0.5) # Delays print for asthetic purposes
 
 # Created a method that will display the inforamtion that has a number of laps
@@ -85,7 +85,7 @@ class Races:
             avg.append(format((hours[i]*3600+minutes[i]*60+seconds[i])/int(self.laps[i]),".2f"))
 
         with open("partA_output_data.txt", "w") as file:
-               file.write("GRAND PRIX,DATE,WINNER,CAR,LAPS,TIME,AVERAGE_LAP\n")
+               file.write("GRAND PRIX,DATE,WINNER,CAR,LAPS,TIME,AVERAGE_per_LAP\n")
                # Conversion of seconds into hours,minutes and seconds
                for i in range(0,len(self.grand_prix)):
                    hour=str(math.floor(round(float(avg[i]))/3600))
@@ -94,16 +94,21 @@ class Races:
                    file.write(self.grand_prix[i]+","+self.date[i]+","+self.winner[i]
                               +","+self.car[i]+","+self.laps[i]+","+self.time[i]
                               +","+hour+":"+min+":"+sec+"\n")
+        with open("partA_output_data.txt", "r") as file:
+               for i in range(23):
+                   print(file.readline())
 
 # Created a method to sort the information according to the wanted field
     def value_sort(self,category,order):
         sort=Sorter()
         if str(category).lower() == "winner":
             fixed = self.winner.copy() # A copy of the original list because the sorting method passes list as a reference
+            se=set(fixed)
+            fixed=list(se)
             sorted = sort.BubbleSort(fixed, order)
 
             for j in range(0, len(fixed)):
-                for i in range(0, len(fixed)):
+                for i in range(0, len(self.winner)):
                     if self.winner[i] == fixed[j]:
                         print(self.grand_prix[i])
                         print(self.date[i])
@@ -160,10 +165,12 @@ class Races:
                  i -= 1
         elif str(category).lower() == "car":
             fixed = self.car.copy() # A copy of the original list because the sorting method passes list as a reference
+            se = set(fixed)
+            fixed = list(se)
             sorted = sort.BubbleSort(fixed, order)
 
             for j in range(0, len(fixed)):
-                for i in range(0, len(fixed)):
+                for i in range(0, len(self.car)):
                     if self.car[i] == fixed[j]:
                         print(self.grand_prix[i])
                         print(self.date[i])
@@ -177,10 +184,12 @@ class Races:
                         continue
         elif str(category).lower() == "laps":
             fixed = self.laps.copy() # A copy of the original list because the sorting method passes list as a reference
+            se = set(fixed)
+            fixed = list(se)
             sorted = sort.BubbleSort(fixed, order)
 
             for j in range(0, len(fixed)):
-                for i in range(0, len(fixed)):
+                for i in range(0, len(self.laps)):
                     if self.laps[i] == fixed[j]:
                         print(self.grand_prix[i])
                         print(self.date[i])
@@ -194,10 +203,12 @@ class Races:
                         continue
         elif str(category).lower() == "time":
             fixed = self.time.copy() # A copy of the original list because the sorting method passes list as a reference
+            se = set(fixed)
+            fixed = list(se)
             sorted = sort.BubbleSort(fixed, order)
 
             for j in range(0, len(fixed)):
-                for i in range(0, len(fixed)):
+                for i in range(0, len(self.time)):
                     if self.time[i] == fixed[j]:
                         print(self.grand_prix[i])
                         print(self.date[i])

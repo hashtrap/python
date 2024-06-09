@@ -46,7 +46,7 @@ def opt4():
 
   if os.path.exists("partA_output_data.txt"):
     toSort=input("Enter the value to sort by [winner,grand prix,date,car,laps,time]\n")
-    order=input("Type 1 or 0 if you want to sort by ascending or descending\n")
+    order=input("Type 0 or 1 if you want to sort by ascending or descending\n")
     if order=='1':
         race.value_sort(toSort,True)
     elif order=='0':
