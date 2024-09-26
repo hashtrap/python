@@ -105,14 +105,14 @@ class Ai:
         if self.train_step is None: # If we haven't provided a training step number it will
             # train adaptivly
             mlp = MLPClassifier(hidden_layer_sizes=self.topology
-                                , max_iter=500
+                                , max_iter=1000
                                 , learning_rate='adaptive')
 
             mlp.fit(X_train, y_train.values.ravel())
 
         else: # since training step provided we work with that
             mlp = MLPClassifier(hidden_layer_sizes=self.topology
-                                , max_iter=500
+                                , max_iter=1000
                                 , learning_rate='constant'
                                 , learning_rate_init=self.train_step)
             mlp.fit(X_train, y_train.values.ravel())
@@ -221,11 +221,11 @@ class Ai:
 
                     if rate=='adaptive':
                          mlp = MLPClassifier(hidden_layer_sizes=type
-                                            , max_iter=500
+                                            , max_iter=1000
                                             , learning_rate=rate)
                     else:
                         mlp = MLPClassifier(hidden_layer_sizes=type
-                                            , max_iter=500
+                                            , max_iter=1000
                                             , learning_rate='constant'
                                             ,learning_rate_init=rate
                                             )
